@@ -1,0 +1,52 @@
+name: paintdotnet
+version: '1.0.0'
+summary: Paint.NET, an image editor made in .NET
+description: |
+  Paint.NET is an application created for Windows designed for simple image editing. It has been ported to an unofficial community snap using Wine.
+grade: stable
+icon: snap/gui/pdn.png
+
+base: core22
+confinement: strict
+
+parts:
+  sommelier-core:
+    plugin: make
+    source: https://github.com/snapcrafters/sommelier-core.git
+    source-branch: "1.0"
+
+plugs:
+  wine-runtime:
+    interface: content
+    target: $SNAP/wine-runtime
+    default-provider: wine-platform-runtime
+  wine-5-stable: # number must match the number in default-provider
+    interface: content
+    target: $SNAP/wine-platform
+    default-provider: wine-platform-5-stable # must be a valid snap
+
+apps:
+  my-windows-app:
+    extensions: [gnome-3-28]
+    command: bin/sommelier run-exe
+    environment:
+      RUN_EXE: C:\path\to\installed\executable.exe
+      INSTALL_URL: http://example.com/installer.exe
+      INSTALL_FLAGS: /silent # optional commandline flags to pass to the installer
+    plugs: # change these as required
+    - home
+    - network
+    - network-bind
+    - removable-media
+  wine:
+    extensions: [gnome-3-28]
+    command: bin/sommelier
+    plugs:
+      - home
+      - network
+  winetricks:
+    extensions: [gnome-3-28]
+    command: bin/sommelier winetricks
+    plugs:
+      - home
+      - network
