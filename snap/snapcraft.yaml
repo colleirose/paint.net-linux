@@ -1,5 +1,5 @@
 name: paintdotnet
-version: '1.0.0'
+version: '5.0.13'
 summary: Paint.NET, an image editor made in .NET
 description: |
   Paint.NET is an application created for Windows designed for simple image editing. It has been ported to an unofficial community snap using Wine.
@@ -33,7 +33,7 @@ apps:
       RUN_EXE: C:\Program Files\paint.net\PaintDotNet.exe
       # the official install files are all ZIP files, so I've extracted the ZIP to give us an actual installer
       # comes from https://github.com/paintdotnet/release/releases
-      INSTALL_URL: https://github.com/colleirose/colleirose/blob/main/paint.net.5.0.13.install.anycpu.web.exe
+      INSTALL_URL: https://github.com/colleirose/paint.net-linux/blob/main/installer/paint.net.5.0.13.install.anycpu.web.exe
       INSTALL_FLAGS: /silent
     plugs:
     - home

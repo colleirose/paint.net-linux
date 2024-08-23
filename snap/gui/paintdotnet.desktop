@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Paint.NET
+Categories=Graphics
+Exec=paintdotnet %F
+Icon=${SNAP}/meta/gui/logo.png
+Terminal=false
+StartupNotify=true
+StartupWMClass=PaintDotNet.exe
